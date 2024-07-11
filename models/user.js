@@ -9,9 +9,9 @@ const UserSchema = new mongoose.Schema({
     type: "String",
     required: true,
   },
-  type:{
-    type:"String",
-    default:"user"
+  type: {
+    type: "String",
+    default: "user",
   },
   date: {
     type: Date,

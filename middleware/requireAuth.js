@@ -12,14 +12,13 @@ export const requireAuth = (req, res, next) => {
 
   const token = authorization.replace("Bearer ", "").trim();
 
-  jwt.verify(token, process.env.JWT_SECRET, async (err, payload) => {
+  jwt.verify(token, process.env.JWT_SECRECT_Key, async (err, payload) => {
     if (err) {
       return res.status(401).json({
         success: false,
         error: "Invalid token",
       });
     }
-
 
     if (!payload || !payload.id || !payload.type) {
       return res.status(401).json({
@@ -28,10 +27,16 @@ export const requireAuth = (req, res, next) => {
       });
     }
 
-    const { id , type} = payload;
+    const { id, type } = payload;
+    if (type == "user") {
+      return res.status(401).json({
+        success: false,
+        error: "user not allowed to do this action",
+      });
+    }
     try {
       req.userid = id;
-      req.usertype = type ;  
+      req.usertype = type;
       next();
     } catch (error) {
       console.error("Error finding user:", error);
