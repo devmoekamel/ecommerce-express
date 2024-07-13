@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const ProductSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+const ProductSchema = new Schema({
   name: {
     type: "String",
     required: [true, "please provide product name"],
@@ -9,16 +10,14 @@ const ProductSchema = new mongoose.Schema({
     type: "String",
     required: [true, "please provide product description"],
   },
-  price:{
-    type:Number,
+  price: {
+    type: Number,
     required: [true, "please provide product description"],
   },
-  date:
-  {
-    type:Date,
-    default:Date.now
-  }
-
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default mongoose.model("product", ProductSchema);

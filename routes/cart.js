@@ -1,12 +1,16 @@
 import { Router } from "express";
-import {addToCart,getCart,deleteCart}  from "../controllers/cart.js";
+import {
+  addToCart,
+  getCart,
+  deleteCart,
+  resetCart,
+} from "../controllers/cart.js";
+import { requireAuth } from "../middleware/requireAuth.js";
 
 const router = Router();
 
+router.use(requireAuth);
+router.route("/").get(getCart).post(addToCart).delete(deleteCart);
+router.route("/reset").delete(resetCart);
 
-
-router.route("/:userid").get(getCart).post(addToCart).delete(deleteCart);
-router.route("/reset").delete();
-
-
-
+export default router;

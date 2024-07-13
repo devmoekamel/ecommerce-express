@@ -4,6 +4,7 @@ import morgan from "morgan";
 import  products  from "./routes/product.js";
 import  Users  from "./routes/user.js";
 import { connectDB } from "./config/db.js";
+import  Cart  from "./routes/cart.js";
 
 const app = express();
 const env = configDotenv({
@@ -15,6 +16,8 @@ app.use(express.json());
 
 app.use("/api/v1/products",products);
 app.use("/api/v1/users",Users);
+app.use("/api/v1/cart",Cart);
+
 // app.use("/api/v1/product",)
 
 app.listen(3000, () => {

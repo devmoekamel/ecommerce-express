@@ -28,12 +28,7 @@ export const requireAuth = (req, res, next) => {
     }
 
     const { id, type } = payload;
-    if (type == "user") {
-      return res.status(401).json({
-        success: false,
-        error: "user not allowed to do this action",
-      });
-    }
+
     try {
       req.userid = id;
       req.usertype = type;
