@@ -81,20 +81,19 @@ ecommerce-api/
 │   └── db.js
 |   └── config.env
 ├── controllers/
-│   ├── authController.js
-│   ├── productController.js
-│   └── cartController.js
+│   ├── user.js
+│   ├── product.js
+│   └── cart.js
 ├── middleware/
-│   ├── authMiddleware.js
-│   └── errorMiddleware.js
+│   ├── requireauth.js
 ├── models/
 │   ├── User.js
 │   ├── Product.js
 │   └── Cart.js
 ├── routes/
-│   ├── authRoutes.js
-│   ├── productRoutes.js
-│   └── cartRoutes.js
+│   ├── user.js
+│   ├── product.js
+│   └── cart.js
 ├── .gitignore
 ├── package.json
 ├── server.js
